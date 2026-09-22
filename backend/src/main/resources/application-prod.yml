@@ -92,11 +92,13 @@ management:
         include: health,info,metrics,prometheus
   endpoint:
     health:
-      show-details: when_authorized
+      show-details: always
       probes:
         enabled: true
   health:
     mail:
+      enabled: false
+    diskspace:
       enabled: false
   info:
     env:
