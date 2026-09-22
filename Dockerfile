@@ -5,9 +5,9 @@ FROM maven:3.9-eclipse-temurin-25 AS builder
 
 WORKDIR /app
 
-# Copy pom.xml and source code
-COPY pom.xml .
-COPY src ./src
+# Copy backend pom.xml and source from monorepo
+COPY backend/pom.xml .
+COPY backend/src ./src
 
 # Build production package
 RUN mvn clean package -DskipTests
@@ -19,7 +19,7 @@ FROM eclipse-temurin:25-jre-alpine
 
 WORKDIR /app
 
-# Install curl for container health check
+# Install curl
 RUN apk add --no-cache curl
 
 # Create non-root system user for secure container execution
