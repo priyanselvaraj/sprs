@@ -174,27 +174,42 @@ public class DataInitializer implements CommandLineRunner {
                     SupplierCategory.builder()
                             .name("Electronics & Hardware")
                             .code("CAT-ELEC")
-                            .description("Suppliers providing computer chips, circuit boards, and electronic equipment.")
+                            .description("Semiconductor chips, printed circuit boards, sensors, microcontrollers, and electronic assemblies.")
                             .build(),
                     SupplierCategory.builder()
-                            .name("Raw Materials")
+                            .name("Raw Materials & Metallurgy")
                             .code("CAT-RAW")
-                            .description("Suppliers supplying metals, plastics, chemical precursors, and textiles.")
+                            .description("Metals, polymers, industrial chemicals, alloys, and raw physical commodities.")
                             .build(),
                     SupplierCategory.builder()
                             .name("Logistics & Transportation")
                             .code("CAT-LOG")
-                            .description("Freight carriers, warehousing services, and 3PL distribution providers.")
+                            .description("Global air, ocean, rail freight, warehousing, customs brokerage, and 3PL distribution services.")
                             .build(),
                     SupplierCategory.builder()
                             .name("IT & Cloud Services")
                             .code("CAT-IT")
-                            .description("Software licensing, cloud infrastructure, and consulting vendors.")
+                            .description("Cloud infrastructure hosting, custom software engineering, cybersecurity, and SaaS enterprise tools.")
                             .build(),
                     SupplierCategory.builder()
                             .name("Packaging & Distribution")
                             .code("CAT-PACK")
-                            .description("Cartons, containers, pallets, and shipping packaging materials.")
+                            .description("Cartons, sustainable mailers, industrial containers, pallets, and shipping packaging materials.")
+                            .build(),
+                    SupplierCategory.builder()
+                            .name("Maintenance, Repair & Operations")
+                            .code("CAT-MRO")
+                            .description("Industrial tooling, factory maintenance parts, electrical spares, safety gear, and plant consumables.")
+                            .build(),
+                    SupplierCategory.builder()
+                            .name("Professional & Consulting Services")
+                            .code("CAT-CONS")
+                            .description("Legal, auditing, supply chain consulting, engineering advisory, and operational risk services.")
+                            .build(),
+                    SupplierCategory.builder()
+                            .name("Facilities & Office Operations")
+                            .code("CAT-FAC")
+                            .description("Janitorial services, HVAC maintenance, workplace security, and commercial facility management.")
                             .build()
             );
 

@@ -25,6 +25,9 @@ public class ProductionEnvironmentValidator implements ApplicationListener<Appli
     @Value("${spring.datasource.url:}")
     private String datasourceUrl;
 
+    @Value("${DATABASE_URL:}")
+    private String envDatabaseUrl;
+
     @Value("${app.cors.allowed-origins:}")
     private String allowedOrigins;
 
@@ -58,7 +61,7 @@ public class ProductionEnvironmentValidator implements ApplicationListener<Appli
         }
 
         // 2. Datasource URL Verification
-        if (!StringUtils.hasText(datasourceUrl)) {
+        if (!StringUtils.hasText(datasourceUrl) && !StringUtils.hasText(envDatabaseUrl)) {
             throw new IllegalStateException("CRITICAL PRODUCTION CONFIGURATION ERROR: Datasource URL is not configured!");
         }
 
