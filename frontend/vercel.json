@@ -1,1 +1,1 @@
-{"rewrites":[{"source":"/(.*)","destination":"/index.html"}]}
+{"rewrites":[{"source":"/api/(.*)","destination":"https://sprs-backend-ty38.onrender.com/api/$1"},{"source":"/(.*)","destination":"/index.html"}]}
