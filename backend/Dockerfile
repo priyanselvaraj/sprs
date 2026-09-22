@@ -38,6 +38,6 @@ EXPOSE 8080
 
 # Environment variable defaults
 ENV SPRING_PROFILES_ACTIVE=prod \
-    JAVA_OPTS="-Xms256m -Xmx512m -XX:+UseG1GC -Djava.security.egd=file:/dev/./urandom"
+    JAVA_OPTS="-Xms128m -Xmx320m -Xss512k -XX:MaxMetaspaceSize=128m -XX:+UseSerialGC -XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Djava.security.egd=file:/dev/./urandom"
 
 ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -Dserver.port=${PORT:-8080} -Dserver.address=0.0.0.0 -jar app.jar"]
