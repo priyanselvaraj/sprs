@@ -1,4 +1,4 @@
-﻿services:
+services:
   # 1. Spring Boot Backend Web Service
   - type: web
     name: sprs-backend
@@ -14,21 +14,37 @@
       - key: PORT
         value: 8080
       - key: DB_HOST
-        value: your-mysql-host.example.com
+        value: your-aiven-mysql-host.aivencloud.com
       - key: DB_PORT
-        value: 3306
+        value: 12345
       - key: DB_NAME
-        value: supplier_rating_db
+        value: defaultdb
       - key: DB_USERNAME
-        value: root
+        value: avnadmin
       - key: DB_PASSWORD
-        value: RootSecret@2026
+        value: your-aiven-password
+      - key: DB_USE_SSL
+        value: "true"
+      - key: DB_ALLOW_PUBLIC_KEY_RETRIEVAL
+        value: "true"
+      - key: APP_SEED_ENABLED
+        value: "true"
       - key: JWT_SECRET
         generateValue: true
       - key: JWT_EXPIRATION_MS
         value: 86400000
       - key: ALLOWED_ORIGINS
         value: "*"
+      - key: MAIL_HOST
+        value: smtp.gmail.com
+      - key: MAIL_PORT
+        value: 587
+      - key: MAIL_USERNAME
+        value: priyanselvaraj756@gmail.com
+      - key: MAIL_PASSWORD
+        value: your-gmail-app-password
+      - key: MAIL_FROM
+        value: priyanselvaraj756@gmail.com
 
   # 2. React Frontend Static Site
   - type: web

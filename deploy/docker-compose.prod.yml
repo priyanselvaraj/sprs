@@ -9,7 +9,7 @@ services:
     container_name: sprs-mysql-prod
     restart: unless-stopped
     environment:
-      MYSQL_DATABASE: ${DB_NAME:-supplier_rating_db}
+      MYSQL_DATABASE: ${DB_NAME:-pri}
       MYSQL_USER: ${DB_USERNAME:-spruser}
       MYSQL_PASSWORD: ${DB_PASSWORD}
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
@@ -51,7 +51,7 @@ services:
       SPRING_PROFILES_ACTIVE: prod
       DB_HOST: mysql
       DB_PORT: 3306
-      DB_NAME: ${DB_NAME:-supplier_rating_db}
+      DB_NAME: ${DB_NAME:-pri}
       DB_USERNAME: ${DB_USERNAME:-spruser}
       DB_PASSWORD: ${DB_PASSWORD}
       JWT_SECRET: ${JWT_SECRET}

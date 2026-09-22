@@ -165,7 +165,7 @@ public class NotificationController {
     ) {
         String targetEmail = (to != null && !to.trim().isEmpty())
                 ? to.trim()
-                : (userDetails != null && userDetails.getUsername() != null && userDetails.getUsername().contains("@") ? userDetails.getUsername() : "test@example.com");
+                : (userDetails != null ? userRepository.findByUsername(userDetails.getUsername()).map(User::getEmail).orElse("priyanselvaraj756@gmail.com") : "priyanselvaraj756@gmail.com");
 
         if (targetEmail.contains("@")) {
             User user = userRepository.findByEmail(targetEmail)

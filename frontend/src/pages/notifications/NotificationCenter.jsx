@@ -6,9 +6,11 @@ import {
   ArrowRight, RefreshCw, Eye, Mail, Send, X
 } from 'lucide-react';
 import { notificationService } from '../../services/notification.service';
+import { useAuth } from '../../context/AuthContext';
 import { Button } from '../../components/common/Button';
 
 export const NotificationCenter = () => {
+  const { user } = useAuth();
   const [notifications, setNotifications] = useState([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(0);
@@ -20,10 +22,16 @@ export const NotificationCenter = () => {
   const [preferences, setPreferences] = useState([]);
   const [prefLoading, setPrefLoading] = useState(false);
   const [showTestEmailModal, setShowTestEmailModal] = useState(false);
-  const [testEmailInput, setTestEmailInput] = useState('priyanselvaraj756@gmail.com');
+  const [testEmailInput, setTestEmailInput] = useState(user?.email || 'priyanselvaraj756@gmail.com');
   const [sendingTestEmail, setSendingTestEmail] = useState(false);
   const [testEmailStatus, setTestEmailStatus] = useState(null);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user?.email) {
+      setTestEmailInput(user.email);
+    }
+  }, [user]);
 
   const fetchNotifications = async () => {
     setLoading(true);
@@ -183,6 +191,9 @@ export const NotificationCenter = () => {
             onClick={() => {
               setShowTestEmailModal(true);
               setTestEmailStatus(null);
+              if (user?.email) {
+                setTestEmailInput(user.email);
+              }
             }}
             className="flex items-center gap-1.5 bg-blue-50 text-blue-700 border-blue-200 hover:bg-blue-100"
           >
@@ -231,7 +242,7 @@ export const NotificationCenter = () => {
               </div>
               <div>
                 <h3 className="text-sm font-bold text-slate-900">Send Notification to Gmail</h3>
-                <p className="text-xs text-slate-500">Dispatch a live HTML test notification directly to any Gmail inbox.</p>
+                <p className="text-xs text-slate-500">Dispatch live HTML notifications directly through Gmail SMTP.</p>
               </div>
             </div>
             <button
@@ -240,6 +251,17 @@ export const NotificationCenter = () => {
             >
               <X className="h-4 w-4" />
             </button>
+          </div>
+
+          <div className="bg-slate-50 border border-slate-200 rounded-lg p-3 text-xs space-y-1">
+            <div className="text-slate-600">
+              <span className="font-semibold text-slate-700">Sending Through:</span> <span className="text-blue-700 font-medium">priyanselvaraj756@gmail.com</span>
+            </div>
+            {user?.username && (
+              <div className="text-slate-600">
+                <span className="font-semibold text-slate-700">Current User:</span> {user.username} {user.email ? `(${user.email})` : ''}
+              </div>
+            )}
           </div>
 
           <form onSubmit={handleSendTestEmail} className="space-y-3">

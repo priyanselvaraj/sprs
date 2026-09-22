@@ -65,9 +65,12 @@ public class NotificationServiceImpl implements NotificationService {
         // Check user preferences
         Optional<UserNotificationPreference> prefOpt = preferenceRepository.findByUserIdAndNotificationType(userId, type);
         
-        // Dispatch Email Notification if enabled (default true)
+        // Dispatch Email Notification if enabled (default true, skip auth events handled by sendLoginAlertEmail)
         boolean emailEnabled = prefOpt.map(UserNotificationPreference::isEmailEnabled).orElse(true);
-        if (emailEnabled && emailService != null) {
+        boolean isAuthEvent = "AUTH".equalsIgnoreCase(resourceType) 
+                || "LOGIN_EMAIL_SENT".equalsIgnoreCase(resourceType) 
+                || "LOGIN_EMAIL_FAILED".equalsIgnoreCase(resourceType);
+        if (emailEnabled && emailService != null && !isAuthEvent) {
             try {
                 emailService.sendGeneralNotificationEmail(user, title, message, type);
             } catch (Exception e) {

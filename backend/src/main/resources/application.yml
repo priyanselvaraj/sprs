@@ -9,7 +9,7 @@ spring:
   profiles:
     active: ${SPRING_PROFILES_ACTIVE:dev}
   datasource:
-    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:supplier_rating_db}?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:pri}?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
     username: "${DB_USERNAME:root}"
     password: "${DB_PASSWORD:root}"
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -32,7 +32,7 @@ spring:
   mail:
     host: ${MAIL_HOST:${SPRING_MAIL_HOST:smtp.gmail.com}}
     port: ${MAIL_PORT:${SPRING_MAIL_PORT:587}}
-    username: ${MAIL_USERNAME:${SPRING_MAIL_USERNAME:}}
+    username: ${MAIL_USERNAME:${SPRING_MAIL_USERNAME:priyanselvaraj756@gmail.com}}
     password: ${MAIL_PASSWORD:${SPRING_MAIL_PASSWORD:}}
     properties:
       mail:
@@ -56,7 +56,7 @@ app:
     enabled: ${APP_SEED_ENABLED:true}
   mail:
     enabled: ${MAIL_ENABLED:true}
-    from: ${MAIL_FROM:${MAIL_USERNAME:noreply@sprsystem.com}}
+    from: ${MAIL_FROM:${MAIL_USERNAME:priyanselvaraj756@gmail.com}}
     from-name: ${MAIL_FROM_NAME:SPRS Notification Center}
     simulation-mode: ${MAIL_SIMULATION_MODE:false}
   sms:
